@@ -1,0 +1,28 @@
+%start Garage_ControllerFSM::Fechada
+%header Garage_Controller.h
+%class Garage_Controller
+
+%map Garage_ControllerFSM
+%%
+Fechada
+{
+	BotaoPremido	A_Abrir	{}
+}
+
+A_Abrir
+{
+	stop	Aberta	{}
+}
+
+A_Fechar
+{
+	fim_stop	Fechada	{}
+	stop_fecho	A_Abrir	{}
+}
+
+Aberta
+{
+	fechar[NoObstacle]	A_Fechar	{}
+}
+
+%%
